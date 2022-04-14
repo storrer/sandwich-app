@@ -1,0 +1,15 @@
+<h1> Welcome to the JTC Sandwich Shop</h1>
+
+<h3> Ingredients: <h3>
+<ul>
+    {% for ingredient in ingredients %}
+    <li>
+        <a href={% url 'ingredients_list' ingredient %}> {{ingredient}}</a>
+    </li>
+    {% endfor %}
+
+</ul>
+<p> Click the button to make the sandwich!</p>
+<form action="/sandwich/random">
+    <input type="submit" value="Make A Random Sandwich">
+</form>
