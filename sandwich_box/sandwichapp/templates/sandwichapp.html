@@ -1,15 +1,26 @@
-<h1> Welcome to the JTC Sandwich Shop</h1>
-
-<h3> Ingredients: <h3>
+<h1> Welcome to the Sandwich App</h1>
+<h3>Ingredients to choose from:</h3>
+{% comment %} 
+To list ingredients from context variables we will open a unordered_list tag 
+and loop through the ingredients list, creating a list item for each ingredient.
+{% endcomment %}
 <ul>
-    {% for ingredient in ingredients %}
+    {% for ingredient_type in ingredients %}
+    {% comment %} Create a link to a page for the ingredient type.
+    {% endcomment %}
     <li>
-        <a href={% url 'ingredients_list' ingredient %}> {{ingredient}}</a>
+        <a href="{% url 'ingredients_list' ingredient_type %}">
+            {{ ingredient_type | title }}
+        </a>
     </li>
     {% endfor %}
-
 </ul>
-<p> Click the button to make the sandwich!</p>
-<form action="/sandwich/random">
-    <input type="submit" value="Make A Random Sandwich">
+
+{% comment %} A button to take generate a random combination sandwich; 
+takes the user to the sandwich_generator url.
+{% endcomment %}
+<p>Click the button if you are hungry!</p>
+
+<form action="{% url 'sandwich_generator' %}">
+    <input type="submit" value="Make a sandwich!" />
 </form>

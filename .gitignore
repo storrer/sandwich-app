@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 Sandwichappinstructions.md
 scratch.ipynb
+.vscode/
