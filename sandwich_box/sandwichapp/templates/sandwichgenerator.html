@@ -1,0 +1,14 @@
+<h2>Your Random Sandwich:</h2>
+<h1>{{ random_sandwich | title }}</h1>
+
+
+{% comment %} Generate another sandwich {% endcomment %}
+
+<form action="{% url 'sandwich_generator' %}">
+    <input type="submit" value="Make another sandwich!" />
+</form>
+
+{% comment %} Button to return to main page. {% endcomment %}
+<form action="{% url 'sandwich' %}">
+    <input type="submit" value="Return to Sandwich App Home">
+</form>

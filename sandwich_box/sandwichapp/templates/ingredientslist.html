@@ -1,1 +1,15 @@
-{% comment %} need to make a view for this templete {% endcomment %}
+<h1>{{ingredient_type | title}}</h1>
+
+{% comment %} Create an unordered list containing an li element for each
+ingredient of the current type.
+{% endcomment %}
+<ul>
+    {% for ingredient in ingredients %}
+        <li>{{ingredient | title}}</li>
+    {% endfor %}
+</ul>
+
+{% comment %} Button to return to main page. {% endcomment %}
+<form action="{% url 'sandwich' %}">
+    <input type="submit" value="Return to Sandwich App Home">
+</form>

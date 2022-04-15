@@ -8,8 +8,7 @@ import random
 ingredients = {
     'meats': ['ham', 'salami', 'turkey', 'chicken', 'meatball', 'tempeh'],
     'cheeses': ['cheddar', 'provolone', 'swiss', 'american', 'gruyere', 'mozzarella'],
-    'toppings': ['lettuce', 'tomato', 'pickles', 'onions', 'peppers'],
-    'dough': ['hand tossed', 'thin crust', 'deep dish']
+    'toppings': ['lettuce', 'tomato', 'pickles', 'onions', 'peppers']
 }
 
 # Create your views here.
@@ -27,10 +26,22 @@ class IngredientsView(View):
 
             return render(
                 request = request,
-                template_name = 'ingredients_list.html',
+                template_name = 'ingredientslist.html',
                 context={ 'ingredients': ingredients[ingredient_type],
                             'ingredient_type': ingredient_type }
             )
 
 class SandwichGeneratorView(View):
-    pass
+    def get(self, request):
+        # Generate a random sandwich from the ingredients dictionary
+        random_meat = random.choice(ingredients['meats'])
+        random_cheese = random.choice(ingredients['cheeses'])
+        random_topping = random.choice(ingredients['toppings'])
+        # Format the sandwich string
+        random_sandwich = f'{random_meat} sandwich with {random_cheese} cheese and {random_topping}'
+        
+        return render(
+            request=request, 
+            template_name='sandwichgenerator.html', 
+            context={'random_sandwich': random_sandwich}
+        )
